@@ -19,12 +19,13 @@ a {
 }
 
 .header {
-
+    width: 100%;
 }
 
 .header-top {
     /* background: #FF512F; 
     background: -webkit-linear-gradient(to right, #F09819, #FF512F);  */
+    width: 100%;
     background: white; 
     display: flex;
     gap: 1em;
@@ -617,7 +618,7 @@ footer {
   
 @media (max-width: 1024px) {
     .header-top, .main-menu, main, footer, .cart-page, .news-list {
-        padding: 1em 2em;
+        padding: 1em 1em;
     }
 
     .header-top .btn {
@@ -658,7 +659,7 @@ footer {
     }
 
     .products-view {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .account-btn {
@@ -687,13 +688,14 @@ footer {
         position: fixed;
         bottom: 0;
         left: 0;
-        width: 100%;
+        max-width: 100%;
         background-color: white;
-        padding: 1em;
+        padding: .5em;
         z-index: 10;
     }
 
     .footer-small-screen {
+        max-width: 100%;
         display: flex;
         justify-content: space-evenly;
     }
