@@ -68,12 +68,25 @@ a {
     color: #d60019;
 }
 
+.custom-dropdown {
+    z-index: 10;
+}
+
 .custom-dropdown .ant-dropdown-menu {
     padding: 1em;
 }
 
 .ant-dropdown-menu-title-content {
     font-size: 1rem;
+}
+
+.header-user-button {
+    background-color: white;
+    color: black !important;
+}
+
+.header-user-button:hover {
+    color: #d60019 !important;
 }
 
 /* Page promotions section */

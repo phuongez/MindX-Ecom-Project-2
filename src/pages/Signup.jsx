@@ -1,8 +1,10 @@
 import { Form, Input, Flex, Checkbox, Button, DatePicker, ConfigProvider } from "antd";
+import { useNavigate } from "react-router";
 
 
 const Signup = () => {
     const [form] = Form.useForm();
+    const navigate = useNavigate();
 
     const registerUser = (phoneNumber, name, email, password) => {
         const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -28,6 +30,7 @@ const Signup = () => {
         localStorage.setItem("users", JSON.stringify(users));
       
         alert("Đăng ký thành công!");
+        navigate('/',{ replace: true })
         return true;
       };
 

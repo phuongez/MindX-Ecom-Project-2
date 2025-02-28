@@ -79,27 +79,21 @@ const Header = ({isLoggedIn, setIsLoggedIn}) => {
                         </NavLink>
                     )  
                     : (
-                        // <Button className="btn user-button account-btn" type="text" icon={<UserOutlined />}>{currentUser.name.split(" ")[0]}</Button>
-                        <Dropdown menu={{items}} trigger={['click']} overlayClassName="custom-dropdown">
-                            <ConfigProvider theme={{token: {colorPrimary: '#d60019',},}}>
+                        <Dropdown menu={{items}} 
+                            trigger={['click']} 
+                            overlayClassName="custom-dropdown">
+                            {/* <ConfigProvider theme={{token: {colorPrimary: '#d60019',},}}>
                                 <Button className="btn user-button account-btn" type="primary" style={{color: "white"}}>
                                     {<UserOutlined />} {currentUser.name.split(" ")[0]}
                                 </Button>
-                            </ConfigProvider>
-                            
+                            </ConfigProvider> */}
+                            <Button className="btn header-user-button" type="text" style={{color: "white"}}>
+                                {<UserOutlined />} {currentUser.name.split(" ")[0]}
+                            </Button>
                         </Dropdown>
                     )
                 }
             </div>
-            {/* <div className="main-menu">
-                <div className="main-menu-buttons">
-                    <Button className="menu-button" type="text" icon={<BsPhone />}>Điện thoại</Button> 
-                    <Button className="menu-button" type="text" icon={<BsTablet />}>Tablet</Button> 
-                    <Button className="menu-button" type="text" icon={<BsSmartwatch />}>Smartwatch</Button> 
-                    <Button className="menu-button" type="text" icon={<BsHeadphones />}>Tai nghe</Button> 
-                    <Button className="menu-button" type="text" icon={<BsUsbDrive />}>Phụ kiện</Button>     
-                </div>
-            </div> */}
         </div>
     );
 }
