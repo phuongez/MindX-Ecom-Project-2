@@ -8,6 +8,13 @@ import { ReadOutlined } from "@ant-design/icons";
 import { AppContext } from "../App";
 import news from "../news";
 import FooterSmall from "../components/FooterSmall";
+import carousel1 from "../carousel/16-pro-max-Valentine-home.webp"
+import carousel2 from "../carousel/dien-thoai-samsung-galaxy-s25-ultra-home-ct-moi.webp"
+import carousel3 from "../carousel/dong-ho-thong-minh-riversong-glow-sw906-home.webp"
+import carousel4 from "../carousel/laptop-asus-ai-11-02.webp"
+import carousel5 from "../carousel/nothing-6-2-25-home.webp"
+import carousel6 from "../carousel/oppo-reno-13f-sliding-20-01-2025-v2.webp"
+import carousel7 from "../carousel/tecno-camon-30-pro-tai-nghe-home.webp"
 
 const Home2 = () => {
     const [loading, setLoading] = useState(true); // Trạng thái loading
@@ -201,13 +208,13 @@ const Home2 = () => {
                 />
                 <section className="promotion-carousel">
                     <Carousel autoplay pauseOnHover>
-                        <img src="src/carousel/16-pro-max-Valentine-home.webp" alt="" />
-                        <img src="src/carousel/dien-thoai-samsung-galaxy-s25-ultra-home-ct-moi.webp" alt="" />
-                        <img src="src/carousel/dong-ho-thong-minh-riversong-glow-sw906-home.webp" alt="" />
-                        <img src="src/carousel/laptop-asus-ai-11-02.webp" alt="" />
-                        <img src="src/carousel/nothing-6-2-25-home.webp" alt="" />
-                        <img src="src/carousel/oppo-reno-13f-sliding-20-01-2025-v2.webp" alt="" />
-                        <img src="src/carousel/tecno-camon-30-pro-tai-nghe-home.webp" alt="" />
+                        <img src={carousel1} alt="" />
+                        <img src={carousel2} alt="" />
+                        <img src={carousel3} alt="" />
+                        <img src={carousel4} alt="" />
+                        <img src={carousel5} alt="" />
+                        <img src={carousel6} alt="" />
+                        <img src={carousel7} alt="" />
                     </Carousel>
                 </section>
                 <div className="latest-news">
