@@ -39,6 +39,8 @@ const Login = ({ onLogin }) => {
 
         // Lưu trạng thái đăng nhập vào Session Storage
         onLogin(user);
+        const currentUserCart = user.cart
+        sessionStorage.setItem("cart",JSON.stringify(currentUserCart))
         alert("Đăng nhập thành công!");
         navigate(from, { replace: true });
         return true;

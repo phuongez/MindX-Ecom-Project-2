@@ -137,7 +137,7 @@ const Cart = () => {
         setCart([]); 
     };
 
-    if (cart.length === 0) {
+    if (currentUser.cart.length === 0) {
         return (
             <div className="cart-page">
                 <h1>Bạn cần thêm sản phẩm vào giỏ hàng trước</h1>
@@ -147,7 +147,7 @@ const Cart = () => {
 
     return (
         <div className="cart-page">
-            {cart.map((product) => (
+            {currentUser.cart.map((product) => (
                 <div className="product-in-cart-container" key={product.id}>
                     <div className="cart-product-img">
                         <img style={{ height: "90px" }} src={product.images[1]} alt="" />
