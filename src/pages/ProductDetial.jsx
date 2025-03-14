@@ -47,27 +47,29 @@ const ProductDetail = () => {
         const userIndex = users.findIndex(u => u.id === currentUser.id);
         const existingProduct = currentUser.cart.find(p => p.id === product.id);
         let updatedCart;
-      
+    
         if (existingProduct) {
-          existingProduct.quantity += 1;
-          updatedCart = cart.map(p =>
-            p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
-        );
+            updatedCart = currentUser.cart.map(p =>
+                p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+            );
         } else {
-          currentUser.cart.push({ ...product, quantity: 1 });
-          updatedCart = [...cart, { ...product, quantity: 1 }];
+            updatedCart = [...currentUser.cart, { ...product, quantity: 1 }];
         }
-      
+    
+        // Cập nhật lại giỏ hàng của currentUser
+        currentUser.cart = updatedCart;
         users[userIndex] = currentUser;
         
+        // Lưu vào storage
         localStorage.setItem("users", JSON.stringify(users));
         sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
-
+    
+        // Cập nhật state để re-render UI
         setCart(updatedCart);
         
         alert("Đã thêm vào giỏ hàng!");
-        
     };
+    
 
     const handleConfirmOrder = (orderInfo) => {
 

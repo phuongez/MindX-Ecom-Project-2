@@ -13,7 +13,7 @@ const FooterSmall = ({isLoggedIn, setIsLoggedIn}) => {
         },
         {
             key: "history",
-            label: <NavLink to="/profile">Lịch sử mua hàng</NavLink>,
+            label: <NavLink to="/purchased">Lịch sử mua hàng</NavLink>,
         },
         {
             key: "logout",
