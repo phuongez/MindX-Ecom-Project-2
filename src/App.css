@@ -759,6 +759,10 @@ footer {
         display: grid;
         grid-template-columns: 1fr;
     }
+
+    .news-detail {
+        margin-inline: 5em;
+    }
 }
 
 @media (max-width: 600px) {
@@ -786,5 +790,21 @@ footer {
 
     .footer-small-screen button {
         font-size: .8rem !important;
+    }
+
+    .news-detail {
+        margin: 1em 1em;
+    }
+
+    .news-detail h1 {
+        font-size: 1.2rem;
+    }
+
+    .news-detail p {
+        font-size: 0.9rem;
+    }
+
+    .news-container {
+        grid-template-columns: 1fr;
     }
 }
