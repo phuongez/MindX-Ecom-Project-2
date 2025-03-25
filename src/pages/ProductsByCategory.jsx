@@ -32,16 +32,16 @@ const ProductsByCategory = () => {
     const { category } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
     const [filteredProducts, setFilteredProducts] = useState([]);
-    
+
     const allProducts = useContext(AppContext);
     const categoryToFetch = categoryMappings[category] || "";
-    
-    // ✅ Lấy giá trị từ URL
+
+    // Lấy giá trị từ URL
     const selectedBrand = searchParams.get("brand") || "";
     const sortOption = searchParams.get("sort") || "";
-    const {items} = useContext(AppContext)
+    const { items } = useContext(AppContext)
 
-    // ✅ Lọc & Sắp xếp sản phẩm
+    // Lọc & Sắp xếp sản phẩm
     useEffect(() => {
         let tempProducts = items.filter(product => product.category === categoryToFetch);
 
@@ -88,7 +88,7 @@ const ProductsByCategory = () => {
             <div className="brand-filter">
                 {[...new Set(filteredProducts.map(product => product.brand).filter(Boolean))].map((brand, index) => (
                     <ConfigProvider key={index} theme={{ token: { colorPrimary: '#d60019' } }}>
-                        <Button 
+                        <Button
                             onClick={() => handleBrandFilter(brand)}
                         >
                             {brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase()}
@@ -101,8 +101,8 @@ const ProductsByCategory = () => {
             <h2>Sắp xếp theo</h2>
             <div className="filter-buttons">
                 <ConfigProvider theme={{ token: { colorPrimary: '#d60019' } }}>
-                    <Button 
-                        onClick={() => handleSort("price-desc")} 
+                    <Button
+                        onClick={() => handleSort("price-desc")}
                         icon={<GrDescend />}
                         className={sortOption === "price-desc" ? "active-sort" : ""}
                     >
@@ -111,8 +111,8 @@ const ProductsByCategory = () => {
                 </ConfigProvider>
 
                 <ConfigProvider theme={{ token: { colorPrimary: '#d60019' } }}>
-                    <Button 
-                        onClick={() => handleSort("price-asc")} 
+                    <Button
+                        onClick={() => handleSort("price-asc")}
                         icon={<GrAscend />}
                         className={sortOption === "price-asc" ? "active-sort" : ""}
                     >
@@ -121,26 +121,26 @@ const ProductsByCategory = () => {
                 </ConfigProvider>
 
                 <ConfigProvider theme={{ token: { colorPrimary: '#d60019' } }}>
-                    <Button 
-                        onClick={() => handleSort("rating")} 
+                    <Button
+                        onClick={() => handleSort("rating")}
                         icon={<SlStar />}
                         className={sortOption === "rating" ? "active-sort" : ""}
                     >
                         Đánh giá
                     </Button>
-                </ConfigProvider>    
+                </ConfigProvider>
             </div>
 
 
             {/* Hiển thị danh sách sản phẩm */}
             <div className="products-view">
                 {filteredProducts.map(product => (
-                    <Badge.Ribbon 
-                        text={`${Math.floor(product.discountPercentage)}%`} 
-                        color='#d60019' 
+                    <Badge.Ribbon
+                        text={`${Math.floor(product.discountPercentage)}%`}
+                        color='#d60019'
                         key={product.id}
                     >
-                        <Link 
+                        <Link
                             to={`/${category}/${product.title.toLowerCase().replace(/\s+/g, "-")}`}
                             style={{ color: "black" }}
                         >
@@ -152,15 +152,15 @@ const ProductsByCategory = () => {
                                     <span>{formatPrice(product.price * 25000 / (1 - product.discountPercentage / 100))}</span>
                                 </p>
                                 <div className="rating-container">
-                                    <Rate 
-                                        value={product.rating} 
+                                    <Rate
+                                        value={product.rating}
                                         allowHalf
                                         disabled
                                         style={{ color: "#ffb100", fontSize: "1em", marginRight: "2px", width: "fit-content" }}
                                     />
                                     <span>{parseFloat(product.rating).toFixed(1)}</span>
                                 </div>
-                            </div>                        
+                            </div>
                         </Link>
                     </Badge.Ribbon>
                 ))}
