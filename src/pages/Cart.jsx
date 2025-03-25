@@ -6,7 +6,6 @@ import { AppContext } from "../App";
 
 const Cart = () => {
     const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    // const [cart, setCart] = useState(currentUser?.cart || []);
     const { cart, setCart } = useContext(AppContext);
     const [totalPrice, setTotalPrice] = useState(0);
     const [isCheckoutVisible, setCheckoutVisible] = useState(false);
@@ -25,7 +24,7 @@ const Cart = () => {
             sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
 
             // Tìm và cập nhật dữ liệu người dùng trong localStorage theo phoneNumber
-            users = users.map(user => 
+            users = users.map(user =>
                 user.phoneNumber === currentUser.phoneNumber ? { ...user, cart: updatedCart } : user
             );
             localStorage.setItem("users", JSON.stringify(users));
@@ -105,7 +104,7 @@ const Cart = () => {
 
     const handleConfirmOrder = (orderInfo) => {
         const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    
+
         const order = {
             id: "ORDER_" + new Date().getTime(),
             user: currentUser.phoneNumber,
@@ -115,29 +114,29 @@ const Cart = () => {
             status: "Đang xử lý",
             date: new Date().toLocaleString(),
         };
-    
+
         let orders = JSON.parse(localStorage.getItem("orders")) || [];
         orders.push(order);
         localStorage.setItem("orders", JSON.stringify(orders));
-    
+
         // Xóa giỏ hàng trong sessionStorage và localStorage
         currentUser.cart = [];
         sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
-    
+
         let users = JSON.parse(localStorage.getItem("users")) || [];
-        users = users.map(user => 
+        users = users.map(user =>
             user.phoneNumber === currentUser.phoneNumber ? { ...user, cart: [] } : user
         );
         localStorage.setItem("users", JSON.stringify(users));
-    
+
         alert("Đặt hàng thành công! Mã đơn hàng: " + order.id);
         setCheckoutVisible(false);
-        
+
         // **Cập nhật giỏ hàng trong AppContext**
-        setCart([]); 
+        setCart([]);
     };
 
-    if (currentUser.cart.length === 0) {
+    if (cart.length === 0) {
         return (
             <div className="cart-page">
                 <h1>Bạn cần thêm sản phẩm vào giỏ hàng trước</h1>
@@ -147,7 +146,7 @@ const Cart = () => {
 
     return (
         <div className="cart-page">
-            {currentUser.cart.map((product) => (
+            {cart.map((product) => (
                 <div className="product-in-cart-container" key={product.id}>
                     <div className="cart-product-img">
                         <img style={{ height: "90px" }} src={product.images[1]} alt="" />

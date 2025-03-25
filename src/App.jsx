@@ -17,6 +17,7 @@ import NewsList from './pages/NewsList'
 import NewsDetail from './pages/NewsDetail'
 import ForgotPassword from './pages/ForgotPassword'
 import Contact from './pages/Contact'
+import UnderConstruction from './components/UnderConstruction'
 
 const AppContext = createContext()
 
@@ -87,6 +88,8 @@ function App() {
                 <Route element={<AuthRequired isLoggedIn={isLoggedIn}/>}>
                   <Route path='cart' element={<Cart />}/>
                 </Route>
+                <Route path="/profile" element={<UnderConstruction />} />
+                <Route path="/purchased" element={<UnderConstruction />} />
               </Route>
             </Routes>
           </BrowserRouter>

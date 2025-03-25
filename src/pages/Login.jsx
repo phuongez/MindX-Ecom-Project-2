@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Form, Input, Flex, Checkbox, Button, ConfigProvider } from "antd";
 import { useLocation, useNavigate, Link } from "react-router";
+import { AppContext } from "../App";
 
 const Login = ({ onLogin }) => {
     const [form] = Form.useForm();
@@ -8,6 +9,7 @@ const Login = ({ onLogin }) => {
     // console.log(location)
     const navigate = useNavigate();
     const from = location.state?.from || "/";
+    const { cart, setCart } = useContext(AppContext);
 
     // Khi component mount, kiểm tra localStorage để điền lại thông tin nếu có
     useEffect(() => {
@@ -39,8 +41,10 @@ const Login = ({ onLogin }) => {
 
         // Lưu trạng thái đăng nhập vào Session Storage
         onLogin(user);
-        const currentUserCart = user.cart
-        sessionStorage.setItem("cart",JSON.stringify(currentUserCart))
+        // const currentUserCart = user.cart
+        // sessionStorage.setItem("cart",JSON.stringify(currentUserCart))
+        setCart(user.cart)
+        sessionStorage.setItem("cart", JSON.stringify(cart))
         alert("Đăng nhập thành công!");
         navigate(from, { replace: true });
         return true;
